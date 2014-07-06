@@ -1,0 +1,7 @@
+// Executed in context of buildscript
+repositories {
+}
+dependencies {
+    classpath 'com.mapvine:gradle-cobertura-plugin:0.1'
+    classpath 'org.ajoberstar:gradle-git:0.5.0'
+}

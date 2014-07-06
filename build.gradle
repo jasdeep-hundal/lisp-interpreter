@@ -1,0 +1,33 @@
+// Establish version and status
+ext.githubProjectName = rootProject.name // Change if github project name is not the same as the root project's name
+group = "org.jasdeep.${githubProjectName}"
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral() // maven { url 'http://jcenter.bintray.com' }
+    }
+    apply from: file('gradle/buildscript.gradle'), to: buildscript
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral() // maven { url: 'http://jcenter.bintray.com' }
+    }
+}
+
+apply from: file('gradle/convention.gradle')
+
+dependencies {
+	compile 'com.google.code.findbugs:jsr305:2.0.2'
+	compile "commons-logging:commons-logging:1.1.1"
+	compile 'com.google.guava:guava:17.0'
+
+	def log4jVersion = '2.0-rc1'
+	runtime "org.apache.logging.log4j:log4j-core:$log4jVersion"	// LOG4J2-365
+	runtime "org.apache.logging.log4j:log4j-jcl:$log4jVersion"
+	runtime "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion"
+
+	testCompile 'junit:junit:4.11'
+}
